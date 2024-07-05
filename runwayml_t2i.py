@@ -4,15 +4,13 @@ Text-to-Image
 
 from hugginface.co runwayml
 
-@@@@
 prompt example:
 
   prompt = "a young man running, listening music with ear phone, looking front, smiling, wearing red jacket and black pants, white and slim, front-photo, whole-phase"
 n_prompt = "unrealistic, saturated, high contrast, painting, drawing, sketch, cartoon, anime, manga, render, 3d, watermark, signature, label"
-@@@@
 
 """
-
+import io
 import requrest
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -26,7 +24,7 @@ headers = {
     "Authorization": "Bearer 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"
 }
 
-def generate_image_from_text(prompt: str, negative_prompt: str, size: str, out: str):
+def generate_image_from_text(prompt: str, negative_prompt: str, size: int, out: str):
   """
   This is the main function of generating image from text.
   implemeted huggingface api for inferencing
@@ -36,7 +34,7 @@ def generate_image_from_text(prompt: str, negative_prompt: str, size: str, out: 
          size: size of generated image
          out: output location of generated image
 
-  :return bool
+  :return generated image
   """
     
   # Send the request to the Hugging Face Inference API
@@ -44,7 +42,8 @@ def generate_image_from_text(prompt: str, negative_prompt: str, size: str, out: 
     "inputs": prompt,
     "negative_prompt":negative_prompt,
     "options": {
-        "wait_for_model": True
+        "wait_for_model": True,
+        "size": (size, size)
     }
   }    
 
@@ -65,12 +64,12 @@ def generate_image_from_text(prompt: str, negative_prompt: str, size: str, out: 
 
     image.save(out)
     
-    return True
+    return image
   
   else:
     print(f"Error: {response.status_code} - {response.text}")
 
-    return True
+    return None
 
 
 

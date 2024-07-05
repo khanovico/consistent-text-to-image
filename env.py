@@ -1,0 +1,2 @@
+huggingface_api = "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"
+replicate_api = "r8_Bw3OZHyDM5EklF163s32lBC98Az96yV4DXuy5"

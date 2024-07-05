@@ -14,6 +14,7 @@ import io
 import requrest
 import matplotlib.pyplot as plt
 from PIL import Image
+import env
 
 
 # Set up the Hugging Face Inference API endpoint
@@ -21,7 +22,7 @@ api_endpoint = "https://api-inference.huggingface.co/models/runwayml/stable-diff
 
 # Set up the API headers
 headers = {
-    "Authorization": "Bearer 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"
+    "Authorization": "Bearer {env.huggingface_api}"
 }
 
 def generate_image_from_text(prompt: str, negative_prompt: str, size: int, out: str):

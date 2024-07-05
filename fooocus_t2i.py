@@ -1,13 +1,12 @@
 import os
 import cv2
 from replicate.client import Client
+import env
 
 replicate = None
 
 def create_engine():
-  api_token = os.environ["REPLICATE_API_TOKEN"]
-
-  replicate = Client(api_token="r8_Bw3OZHyDM5EklF163s32lBC98Az96yV4DXuy5")
+  replicate = Client(api_token={env.replicate_api})
 
 def generate_image_from_text(prompt: str, negative_prompt: str, size: int, out_dir: str):
   """

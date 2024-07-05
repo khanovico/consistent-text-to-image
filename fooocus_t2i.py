@@ -52,5 +52,5 @@ def generate_image_from_text(prompt: str, negative_prompt: str, size: int, out_d
 
   cv2.imwrite(out_dir, output)
 
-  return out
+  return output
 

@@ -1,0 +1,8 @@
+transformers
+diffusers
+torch
+torchvision
+accelerate
+socaity-face2face
+huggingface_hub
+replicate
